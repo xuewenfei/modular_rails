@@ -887,7 +887,7 @@ Now,  if  you access   localhost:3000 , the application works and returns a beau
 screen!
 
 4.2.3
-Part  3:  Style our app
+Part  3:  Style our app(add gemspec and require lib/core)
 We’re going to  use bootstrap-sass  to  style SamuraiCRM. To  do  that, we  need  to  add a few
 gems  to  the engine   gemspec .
 Step  1:  Add the gems!
@@ -910,7 +910,9 @@ module  Samurai
 end
 Don’t forget  to  do  that  when  you work  on  your  own modules.
 Let’s run  bundle install   from  the parent  application to  get all the gems  we  just  added.
-Don’t forget  to  restart your  server.Step 2:  Fix the assets  folder
+Don’t forget  to  restart your  server.
+
+Step 2:  Fix the assets  folder
 Once  again,  we  have  to  fix and rearrange the assets  folder  to  add one more  level.  Change
 your  assets  folder  inside  the  Core   engine  to  look  like  this  or  use the commands  below.
 assets/
@@ -926,6 +928,8 @@ The commands: (Run  them  from  the  Core   engine  folder)
 mv  app/assets/images/core  app/assets/images/samurai
 mv  app/assets/javascripts/core app/assets/javascripts/samurai
 mv  app/assets/stylesheets/core app/assets/stylesheets/samurai
+
+
 Step  3:  Rename  application.css and load  Bootstrap css
 Since we’re going to  use Bootstrap,  we  need  to  change  the  application.css   file.  Simply
 rename  it  to   application.css.scss   and change  its content to:
@@ -936,6 +940,7 @@ body  {
   padding-top:  65px; //  For the nav bar
 }
 Now we’re almost  ready to  use Bootstrap!
+
 Step  4:  Load  Bootstrap javascript
 Let’s add Bootstrap javascript  files too.
 //  SamuraiCRM/engines/core/assets/stylesheets/samurai/application.js
@@ -943,7 +948,9 @@ Let’s add Bootstrap javascript  files too.
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-Time  for some  HTML!Step 5:  Update  the layout  file
+Time  for some  HTML!
+
+Step 5:  Update  the layout  file
 Because we  changed a bit the assets  folders,  we  need  to  update  the layout  file  by  changing
 the stylesheet  and javascript  link  locations.
 <!--  SamuraiCRM/engines/core/app/views/layouts/samurai/application.html.erb  -->
@@ -959,6 +966,7 @@ the stylesheet  and javascript  link  locations.
           <%= yield %>
   </body>
 </html>
+
 Step  6:  Add content to  the layout  file
 Since we  added Bootstrap,  we’re going to  leverage  it!   You can paste the following code
 inside  the  <body>   tag.
@@ -989,7 +997,10 @@ will  crash when  we  try to  access  the views from  Devise  in  the future.   
 of  path  conflict  when  using Devise  inside  a namespaced  engine.Is it  a good  practice  to  prefix  all our paths with   samurai  to  avoid any problem in  the
 future.
 If  you check your  browser,  you should  see the following.  Figure  4.1
+
 Figure  4.1:   So white...  So  empty....
+
+
 Step  7:  Add a title to  the dashboard
 Last  step  before  we  create  our first model,  we’re going to  give  a title to  the blank
 dashboard.  Just  add the following code  to  the dashboard index view.
@@ -998,9 +1009,12 @@ dashboard.  Just  add the following code  to  the dashboard index view.
 <hr>
 Figure  4.2:   Now, it  looks pretty  good.   If  you have  poor  taste!
 4.2.4
+
+
 Part  4:  Users & Authentication
 Our modular application is  still pretty  basic.  It’s  time  to  allow people  to  create  an  account
-and login!  We’re not going to  reinvent  the wheel,  so  let’s use Devise, the greatAuthentication gem (which  is  actually  built as  a Rails engine).
+and login!  We’re not going to  reinvent  the wheel,  so  let’s use Devise, the great Authentication gem (which  is  actually  built as  a Rails engine).
+
 Step  1:  Add the Devise  gem in  the Core  module  gemspec file.
 # SamuraiCRM/engines/core/samurai_core.gemspec
 # ...
@@ -1017,6 +1031,7 @@ module  Samurai
 end
 And run  bundle install   from  the parent  application.  Don’t forget  to  restart your
 webserver too!
+
 Step  2:  Generate  Devise
 Devise  comes with  a handy generator that  we’re going to  use to  create  the required  files.
 Run the following command from  inside  the  Core   engine.
