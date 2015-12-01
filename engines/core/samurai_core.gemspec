@@ -14,5 +14,8 @@ Gem::Specification.new  do  |s|
                                 "README.rdoc"]
     s.test_files  = Dir[""]
     s.add_dependency  "rails",  "~> 4.2.0"
+    s.add_dependency  'sass-rails', "~> 5.0.1"
+    s.add_dependency  'bootstrap-sass', "~> 3.3.3"
+    s.add_dependency  'autoprefixer-rails', "~> 5.1.5"
     s.add_development_dependency  "sqlite3"
 end
