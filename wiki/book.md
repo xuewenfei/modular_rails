@@ -885,6 +885,7 @@ mkdir -p  app/views/samurai/dashboard &&  \
 touch app/views/samurai/dashboard/index.html.erb
 Now,  if  you access   localhost:3000 , the application works and returns a beautiful white
 screen!
+
 4.2.3
 Part  3:  Style our app
 We’re going to  use bootstrap-sass  to  style SamuraiCRM. To  do  that, we  need  to  add a few
